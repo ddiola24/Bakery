@@ -1,3 +1,9 @@
+<?php session_start();  
+    include "../controllers/transactionFucntions.php"; 
+
+$_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
+print_r($_SESSION['page']);
+?>
 <!DOCTYPE html>
 <html>
 
@@ -86,27 +92,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php error_reporting(E_ERROR | E_PARSE); foreach ($getorder as $index => $order): ?>
                                     <tr>
-                                        <td> Ensaymada </td>
-                                        <td> 1 </td>
-                                        <td> PHP 7.00 </td>
+                                        <td> <?php echo $order['pname'] ?> </td>
+                                        <td> <?php echo $order['orderqty'] ?>  </td>
+                                        <td> <?php echo $order['subtotal'] ?>  </td>
                                         <td> DELETE </td>
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <table class="table table-responsive">
                                 <thead>
+                                    <?php error_reporting(E_ERROR | E_PARSE); foreach ($gettotal as $index => $total): ?>
                                     <tr>
-                                        <th>Total: </th>
-                                        <th> 0000 </th>
+                                        <td>Total: </td>
+                                        <th> <?php echo "₱".$total['grandtotal']; ?> </th>
                                     </tr>
+                                     <?php endforeach; ?>
                                 </thead>
                             </table>
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
                                         <th> 
-                                            <button type="button" class="btn bg-green btn-block btn-lg waves-effect">PAY</button>
+                                            <button type="submit" name="submit" value="pay" class="btn bg-green btn-block btn-lg waves-effect">PAY</button>
                                         </th>
                                     </tr>
                                 </thead>
@@ -141,6 +151,7 @@
                                 <!-- Nav tabs -->
                             <ul class="nav nav-tabs tab-nav-right" role="tablist">
                                 <li role="presentation" class="active"><a href="#bread" data-toggle="tab">BREAD</a></li>
+                                <li role="presentation"><a href="#drinks" data-toggle="tab">DRINKS</a></li>
                                 <li role="presentation"><a href="#others" data-toggle="tab">OTHERS</a></li>
                             </ul>
 
@@ -148,156 +159,58 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="bread">
                                 <!-- BREAD -->
-                                                <div class="body table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="width: 200px">
-                                                                <p id="">BREAD # 1</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 2</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 3</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">BREAD # 4</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                <p id="">BREAD # 5</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 6</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 7</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">BREAD # 8</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                <p id="">BREAD # 9</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 10</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">BREAD # 11</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">BREAD # 12</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                        <!-- #END BREAD -->
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getbread as $index => $bread): ?>
+                                        <form action="<?php $_PHP_SELF ?>" method="POST">
+                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                             <p id=""><?php echo $bread['pname']; ?></p>
+                                            <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                            <input min="0" required type="number" name="qty" style="width: 50px">
+                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                        </div>
+                                        </form>
+                                         <?php endforeach; ?>
+
+                                    </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="others">
-                                        <!-- OTHERS -->
-                                                <div class="body table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                <p id="">DRINK # 1</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">DRINK # 2</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">DRINK # 3</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">DRINK # 4</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                <p id="">SHAKE # 1</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">SHAKE # 2</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">SHAKE # 3</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">SHAKE # 4</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                <p id="">FRAPPE # 1</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">FRAPPE # 2</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                                <td>
-                                                                <p id="">TEA # 1</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>   
-                                                                <td>
-                                                                <p id="">TEA # 2</p>
-                                                                <input type="number" name="qnty" style="width: 50px">
-                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                        <!-- #END OTHERS -->
+                                <!-- #END BREAD -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="drinks">
+                                <!-- DRINKS -->
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrinks as $index => $drinks): ?>
+                                        <form action="<?php $_PHP_SELF ?>" method="POST">
+                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                             <p id=""><?php echo $drinks['pname']; ?></p>
+                                            <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                            <input min="0" required type="number" name="qty" style="width: 50px">
+                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                        </div>
+                                        </form>
+                                         <?php endforeach; ?>
+
+                                    </div>
+                                </div>
+                                <!-- #END DRINK -->
+                                <!-- OTHERS -->
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $others): ?>
+                                        <form action="<?php $_PHP_SELF ?>" method="POST">
+                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                             <p id=""><?php echo $others['pname']; ?></p>
+                                            <input type="hidden" name="pid" value="<?php echo $others['pid']; ?>">
+                                            <input min="0" required type="number" name="qty" style="width: 50px">
+                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                        </div>
+                                        </form>
+                                         <?php endforeach; ?>
+
+                                    </div>
+                                </div>
+                                <!-- #END OTHERS -->
                                 </div>
                             </div>
                                 <!-- #END Tab -->
@@ -320,11 +233,21 @@
     <!-- Slimscroll Plugin Js -->
     <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
+    <!-- Jquery Validation Plugin Css -->
+    <script src="../../plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- JQuery Steps Plugin Js -->
+    <script src="../../plugins/jquery-steps/jquery.steps.js"></script>
+
+    <!-- Sweet Alert Plugin Js -->
+    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
+    <script src="../../js/pages/forms/form-validation.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

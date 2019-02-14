@@ -98,13 +98,9 @@
                                 <thead>
                                     <tr>
                                         <th>Total: </th>
+                                        <th> 0000 </th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> 0000 </td>
-                                    </tr>
-                                </tbody>
                             </table>
                             <table class="table table-responsive">
                                 <thead>
@@ -164,50 +160,61 @@
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 2</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 3</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">BREAD # 4</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                 <p id="">BREAD # 5</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 6</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 7</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">BREAD # 8</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                 <p id="">BREAD # 9</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 10</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 11</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">BREAD # 12</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>
@@ -224,54 +231,66 @@
                                                             <tr>
                                                                 <td>
                                                                 <p id="">DRINK # 1</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">DRINK # 2</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">DRINK # 3</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">DRINK # 4</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                 <p id="">SHAKE # 1</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">SHAKE # 2</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">SHAKE # 3</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">SHAKE # 4</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                 <p id="">FRAPPE # 1</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">FRAPPE # 2</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>
                                                                 <p id="">TEA # 1</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>   
                                                                 <td>
                                                                 <p id="">TEA # 2</p>
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                             </tr>

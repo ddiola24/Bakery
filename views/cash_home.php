@@ -71,11 +71,11 @@
         </div>
     </nav>
     <!-- #Top Bar -->
-    <section>
+   <!--  <section> -->
         <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
+       <!--  <aside id="leftsidebar" class="sidebar"> -->
             <!-- Menu -->
-            <div class="menu">
+           <!--  <div class="menu">
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li>
@@ -97,21 +97,21 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <!-- #Menu -->
             <!-- Footer -->
-            <div class="legal">
+            <!-- <div class="legal">
                 <div class="copyright">
                     &copy; 2019 <a href="javascript:void(0);">Bakery</a>.
                 </div>
                 <div class="version">
                     <b>Lemon Company </b>
                 </div>
-            </div>
+            </div> -->
             <!-- #Footer -->
-        </aside>
+        <!-- </aside> -->
         <!-- #END# Left Sidebar -->
-    </section>
+<!--     </section> -->
 
     <section class="content">
 <!-- Basic Examples -->
@@ -119,18 +119,62 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                BASIC EXAMPLES
+                                COMPUTING TABLE
                             </h2>
                         </div>
-                        <div class="body">
-                            <ul class="list-group">
-                                <li class="list-group-item">Cras justo odio</li>
-                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                                <li class="list-group-item">Morbi leo risus</li>
-                                <li class="list-group-item">Porta ac consectetur ac</li>
-                                <li class="list-group-item">Vestibulum at eros</li>
-                            </ul>
+                        <!-- Computation -->
+                            <div class="body">
+                            <form class="form-horizontal">
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-2 form-control-label">
+                                        <label for="prod_name"> Product Name: </label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" id="prod_name" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="prod_qnty"> Quantity: </label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" id="prod_qnty" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="total"> TOTAL: </label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" id="total" class="form-control" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                        <input type="checkbox" id="remember_me_3" class="filled-in">
+                                        <label for="remember_me_3">Remember Me</label>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                        <button type="button" class="btn btn-primary m-t-15 waves-effect">LOGIN</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                        <!-- #END Computation -->
                     </div>
                 </div>
                 <!-- #END# Basic Examples -->
@@ -143,16 +187,17 @@
                             </h2>
                         </div>
                              <div class="panel-group" id="accordion_4" role="tablist" aria-multiselectable="true">
+                                <!-- Tab -->
+                                <!-- Nav tabs -->
+                            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                                <li role="presentation" class="active"><a href="#bread" data-toggle="tab">BREAD</a></li>
+                                <li role="presentation"><a href="#others" data-toggle="tab">OTHERS</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="bread">
                                 <!-- BREAD -->
-                                        <div class="panel panel-danger">
-                                            <div class="panel-heading" role="tab" id="headingOne_4">
-                                                <h4 class="panel-title">
-                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4" aria-expanded="true" aria-controls="collapseOne_4">
-                                                        Breads
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseOne_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_4">
                                                 <div class="body table-responsive">
                                                     <table class="table table-bordered">
                                                         <tbody>
@@ -213,19 +258,10 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                        </div>
                                         <!-- #END BREAD -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="others">
                                         <!-- OTHERS -->
-                                        <div class="panel panel-danger">
-                                            <div class="panel-heading" role="tab" id="headingOne_4">
-                                                <h4 class="panel-title">
-                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4" aria-expanded="true" aria-controls="collapseOne_4">
-                                                        Other
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseOne_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_4">
                                                 <div class="body table-responsive">
                                                     <table class="table table-bordered">
                                                         <tbody>
@@ -286,9 +322,10 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                        </div>
                                         <!-- #END OTHERS -->
+                                </div>
+                            </div>
+                                <!-- #END Tab -->
                                     </div>
                                 </div>
                     </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Blank Page | Bootstrap Based Admin Template - Material Design</title>
+    <title>CASHIER</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -56,7 +56,7 @@
         </div>
         <input type="text" placeholder="START TYPING...">
         <div class="close-search">
-            <i class="material-icons">close</i>
+            <i class="material-icons">close</i>2
         </div>
     </div>
     <!-- #END# Search Bar -->
@@ -74,26 +74,12 @@
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
-            <div class="user-info">
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cashier</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="header">MENU</li>
                     <li>
-                        <a href="../../index.html">
+                        <a href="cash_home.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
@@ -102,6 +88,12 @@
                         <a href="../../pages/typography.html">
                             <i class="material-icons">text_fields</i>
                             <span>Typography</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../pages/typography.html">
+                            <i class="material-icons">text_fields</i>
+                            <span>Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -122,11 +114,186 @@
     </section>
 
     <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>BLANK PAGE</h2>
-            </div>
-        </div>
+<!-- Basic Examples -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                BASIC EXAMPLES
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Morbi leo risus</li>
+                                <li class="list-group-item">Porta ac consectetur ac</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Basic Examples -->
+                <!-- Badges -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                PRODUCTS
+                            </h2>
+                        </div>
+                             <div class="panel-group" id="accordion_4" role="tablist" aria-multiselectable="true">
+                                <!-- BREAD -->
+                                        <div class="panel panel-danger">
+                                            <div class="panel-heading" role="tab" id="headingOne_4">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4" aria-expanded="true" aria-controls="collapseOne_4">
+                                                        Breads
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_4">
+                                                <div class="body table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">BREAD # 1</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 2</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 3</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">BREAD # 4</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">BREAD # 5</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 6</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 7</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">BREAD # 8</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">BREAD # 9</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 10</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">BREAD # 11</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">BREAD # 12</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END BREAD -->
+                                        <!-- OTHERS -->
+                                        <div class="panel panel-danger">
+                                            <div class="panel-heading" role="tab" id="headingOne_4">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4" aria-expanded="true" aria-controls="collapseOne_4">
+                                                        Other
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne_4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_4">
+                                                <div class="body table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">DRINK # 1</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">DRINK # 2</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">DRINK # 3</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">DRINK # 4</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">SHAKE # 1</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">SHAKE # 2</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">SHAKE # 3</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">SHAKE # 4</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                <p id="">FRAPPE # 1</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">FRAPPE # 2</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                                <td>
+                                                                <p id="">TEA # 1</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>   
+                                                                <td>
+                                                                <p id="">TEA # 2</p>
+                                                                <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- #END OTHERS -->
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <!-- #END# Badges -->
     </section>
 
     <!-- Jquery Core Js -->

@@ -71,115 +71,67 @@
         </div>
     </nav>
     <!-- #Top Bar -->
-   <!--  <section> -->
+    <section>
         <!-- Left Sidebar -->
-       <!--  <aside id="leftsidebar" class="sidebar"> -->
-            <!-- Menu -->
-           <!--  <div class="menu">
-                <ul class="list">
-                    <li class="header">MENU</li>
-                    <li>
-                        <a href="cash_home.php">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../pages/typography.html">
-                            <i class="material-icons">text_fields</i>
-                            <span>Typography</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../../pages/typography.html">
-                            <i class="material-icons">text_fields</i>
-                            <span>Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
-            <!-- #Menu -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Compute -->
+            <div class="body table-responsive">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name: </th>
+                                        <th>Quantity: </th>
+                                        <th>Price: </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> Ensaymada </td>
+                                        <td> 1 </td>
+                                        <td> PHP 7.00 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Total: </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> 0000 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th> 
+                                            <button type="button" class="btn bg-green btn-block btn-lg waves-effect">PAY</button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                            </table>
+                </div>
+            <!-- #END Compute -->
             <!-- Footer -->
-            <!-- <div class="legal">
+            <div class="legal">
                 <div class="copyright">
                     &copy; 2019 <a href="javascript:void(0);">Bakery</a>.
                 </div>
                 <div class="version">
                     <b>Lemon Company </b>
                 </div>
-            </div> -->
+            </div>
             <!-- #Footer -->
-        <!-- </aside> -->
+        </aside>
         <!-- #END# Left Sidebar -->
-<!--     </section> -->
+    </section>
 
     <section class="content">
-<!-- Basic Examples -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                COMPUTING TABLE
-                            </h2>
-                        </div>
-                        <!-- Computation -->
-                            <div class="body">
-                            <form class="form-horizontal">
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-2 form-control-label">
-                                        <label for="prod_name"> Product Name: </label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="prod_name" class="form-control" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="prod_qnty"> Quantity: </label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="number" id="prod_qnty" class="form-control" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label for="total"> TOTAL: </label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="number" id="total" class="form-control" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <input type="checkbox" id="remember_me_3" class="filled-in">
-                                        <label for="remember_me_3">Remember Me</label>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <button type="button" class="btn btn-primary m-t-15 waves-effect">LOGIN</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- #END Computation -->
-                    </div>
-                </div>
-                <!-- #END# Basic Examples -->
                 <!-- Badges -->
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
@@ -204,6 +156,7 @@
                                                             <tr>
                                                                 <td>
                                                                 <p id="">BREAD # 1</p>
+                                                                <input type="number" name="qnty" width="5px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                                                 </td>
                                                                 <td>

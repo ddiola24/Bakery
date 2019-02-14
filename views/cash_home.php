@@ -73,7 +73,7 @@
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
-        <aside id="leftsidebar" class="sidebar">
+        <aside id="leftsidebar" class="sidebar-cashier">
             <!-- Compute -->
             <div class="body table-responsive">
                             <table class="table table-responsive">
@@ -82,6 +82,7 @@
                                         <th>Product Name: </th>
                                         <th>Quantity: </th>
                                         <th>Price: </th>
+                                        <th>Action: </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,6 +90,7 @@
                                         <td> Ensaymada </td>
                                         <td> 1 </td>
                                         <td> PHP 7.00 </td>
+                                        <td> DELETE </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -129,7 +131,7 @@
         <!-- #END# Left Sidebar -->
     </section>
 
-    <section class="content">
+    <section class="content-cashier">
                 <!-- Badges -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -154,10 +156,11 @@
                                                     <table class="table table-bordered">
                                                         <tbody>
                                                             <tr>
-                                                                <td>
+                                                                <td style="width: 200px">
                                                                 <p id="">BREAD # 1</p>
-                                                                <input type="number" name="qnty" width="5px">
+                                                                <input type="number" name="qnty" style="width: 50px">
                                                                 <button class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
+                                                                
                                                                 </td>
                                                                 <td>
                                                                 <p id="">BREAD # 2</p>

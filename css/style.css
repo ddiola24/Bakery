@@ -2407,6 +2407,12 @@ section.content {
   -o-transition: 0.5s;
   -webkit-transition: 0.5s;
   transition: 0.5s; }
+  section.content-cashier {
+  margin: 100px 15px 0 415px;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s; }
 
 /* Dashboard =================================== */
 .dashboard-flot-chart {
@@ -7521,6 +7527,25 @@ fieldset[disabled] .form-control {
   font-family: "Roboto", sans-serif;
   background: #fdfdfd;
   width: 300px;
+  overflow: hidden;
+  display: inline-block;
+  height: calc(100vh - 70px);
+  position: fixed;
+  top: 70px;
+  left: 0;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 11 !important; }
+  .sidebar-cashier {
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  font-family: "Roboto", sans-serif;
+  background: #fdfdfd;
+  width: 400px;
   overflow: hidden;
   display: inline-block;
   height: calc(100vh - 70px);

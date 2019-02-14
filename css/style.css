@@ -7582,6 +7582,33 @@ fieldset[disabled] .form-control {
       overflow: hidden;
       margin-top: 5px;
       font-size: 13px; }
+
+      .sidebar-cashier .legal {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      border-top: 1px solid #eee;
+      padding: 15px;
+      overflow: hidden; }
+    .sidebar-cashier .legal .copyright {
+      font-size: 13px;
+      white-space: nowrap;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+      .sidebar-cashier .legal .copyright a {
+        font-weight: bold;
+        text-decoration: none; }
+    .sidebar-cashier .legal .version {
+      white-space: nowrap;
+      -ms-text-overflow: ellipsis;
+      -o-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin-top: 5px;
+      font-size: 13px; }
+
   .sidebar .user-info {
     padding: 13px 15px 12px 15px;
     white-space: nowrap;

@@ -9,7 +9,7 @@ class transactionModel extends DBconnection {
 		}return TRUE;	
 	}
 	function removeorder($order){
-		$query="DELETE FROM orders WHERE pid = ".$orders['pid']."";
+		$query="DELETE FROM `orders` WHERE pid = \"".$order['pid']."\"";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result){
 			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
@@ -101,6 +101,30 @@ class productModel extends DBconnection {
 	}
 	function getbread(){
 		$query="SELECT * FROM products WHERE category = 'bread'";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;
+	}
+	function getdrink(){
+		$query="SELECT * FROM products WHERE category = 'drink'";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;
+	}
+	function getothers(){
+		$query="SELECT * FROM products WHERE category = 'others'";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result) {
 				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));

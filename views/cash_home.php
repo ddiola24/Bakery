@@ -2,7 +2,7 @@
     include "../controllers/transactionFucntions.php"; 
 
 $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
-print_r($_SESSION['page']);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,10 +94,17 @@ print_r($_SESSION['page']);
                                 <tbody>
                                     <?php error_reporting(E_ERROR | E_PARSE); foreach ($getorder as $index => $order): ?>
                                     <tr>
-                                        <td> <?php echo $order['pname'] ?> </td>
-                                        <td> <?php echo $order['orderqty'] ?>  </td>
-                                        <td> <?php echo $order['subtotal'] ?>  </td>
-                                        <td> DELETE </td>
+                                        <td> <?php echo $order['pname']; ?> </td>
+                                        <td> <?php echo $order['orderqty']; ?>  </td>
+                                        <td> <?php echo "₱".$order['subtotal']; ?>  </td>
+                                        <td> 
+                                            <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                <input hidden="" name="pid" value="<?php echo $order['prodid']; ?>">
+                                                <button  type="submit" name="submit" value="removeorder" class="btn btn-warning waves-effect">
+                                                <i class="material-icons">delete</i>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -116,7 +123,7 @@ print_r($_SESSION['page']);
                                 <thead>
                                     <tr>
                                         <th> 
-                                            <button type="submit" name="submit" value="pay" class="btn bg-green btn-block btn-lg waves-effect">PAY</button>
+                                            <button data-toggle="modal" data-target="#defaultModal" type="submit" name="submit" value="pay" class="btn bg-green btn-block btn-lg waves-effect">PAY</button>
                                         </th>
                                     </tr>
                                 </thead>
@@ -158,59 +165,58 @@ print_r($_SESSION['page']);
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="bread">
-                                <!-- BREAD -->
-                                <div class="body">
-                                    <div class="row clearfix">
-                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getbread as $index => $bread): ?>
-                                        <form action="<?php $_PHP_SELF ?>" method="POST">
-                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                             <p id=""><?php echo $bread['pname']; ?></p>
-                                            <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                            <input min="0" required type="number" name="qty" style="width: 50px">
-                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                        </div>
-                                        </form>
-                                         <?php endforeach; ?>
+                                    <!-- BREAD -->
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getbread as $index => $bread): ?>
+                                            <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-amber">
+                                                    <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
+                                                    <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                </button>
+                                            </form>
+                                             <?php endforeach; ?>
 
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- #END BREAD -->
+                                    <!-- #END BREAD -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="drinks">
-                                <!-- DRINKS -->
-                                <div class="body">
-                                    <div class="row clearfix">
-                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrinks as $index => $drinks): ?>
-                                        <form action="<?php $_PHP_SELF ?>" method="POST">
-                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                             <p id=""><?php echo $drinks['pname']; ?></p>
-                                            <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                            <input min="0" required type="number" name="qty" style="width: 50px">
-                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
-                                        </div>
-                                        </form>
-                                         <?php endforeach; ?>
+                                    <!-- DRINKS -->
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrink as $index => $drinks): ?>
+                                            <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-indigo">
+                                                    <div class="color-name"><?php echo $drinks['pname']." ₱".$drinks['price']."/pcs"; ?></div>
+                                                    <input type="hidden" name="pid" value="<?php echo $drinks['pid']; ?>">
+                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                </button>
+                                            </form>
+                                             <?php endforeach; ?>
 
-                                    </div>
-                                </div>
-                                <!-- #END DRINK -->
-                                <!-- OTHERS -->
-                                <div class="body">
-                                    <div class="row clearfix">
-                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $others): ?>
-                                        <form action="<?php $_PHP_SELF ?>" method="POST">
-                                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-                                             <p id=""><?php echo $others['pname']; ?></p>
-                                            <input type="hidden" name="pid" value="<?php echo $others['pid']; ?>">
-                                            <input min="0" required type="number" name="qty" style="width: 50px">
-                                            <button type="submit" name="submit" value="addorder" class="btn btn-primary waves-effect" data-type="autoclose-timer">ADD</button>
                                         </div>
-                                        </form>
-                                         <?php endforeach; ?>
-
                                     </div>
+                                    <!-- #END DRINK -->
                                 </div>
-                                <!-- #END OTHERS -->
+                                <div role="tabpanel" class="tab-pane fade" id="others">
+                                    <!-- DRINKS -->
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $others): ?>
+                                            <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-teal">
+                                                    <div class="color-name"><?php echo $others['pname']." ₱".$others['price']."/pcs"; ?></div>
+                                                    <input type="hidden" name="pid" value="<?php echo $others['pid']; ?>">
+                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                </button>
+                                            </form>
+                                             <?php endforeach; ?>
+
+                                        </div>
+                                    </div>
+                                    <!-- #END DRINK -->
                                 </div>
                             </div>
                                 <!-- #END Tab -->
@@ -220,7 +226,59 @@ print_r($_SESSION['page']);
                 </div>
                 <!-- #END# Badges -->
     </section>
+    <?php if($gettotal[0]['grandtotal'] != NULL): ?>
+    <!-- Start Modal -->
+    <form action="<?php $_PHP_SELF ?>" method="POST">
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="defaultModalLabel">Payment Window</h4>
+                        </div>
+                        <div class="modal-body">
+                        
+                        <div class="body table-responsive">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <?php error_reporting(E_ERROR | E_PARSE); foreach ($gettotal as $index => $total): ?>
+                                    <tr>
+                                        <td>Amount Due: </td>
+                                        <td><?php echo "₱".$total['grandtotal']; ?> </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Customer Name: </td>
+                                        <td><input type="text" name="payment"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payment Amount: </td>
+                                        <td><input min="<?php echo $total['grandtotal'] ?>" autocomplete="off" id="myInput" required type="number" name="payment"></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </thead>
+                            </table>
+                        </div>
+                        
+                        <div class="modal-footer">
 
+                            <button id="myBtn" type="submit" class="btn btn-link waves-effect">PAY</button>
+                            <button type="button"  class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+    </div>
+     </form>
+
+ <?php endif; ?>
+    <script>
+    var input = document.getElementById("myInput");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("myBtn").click();
+      }
+    });
+    </script>
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
 

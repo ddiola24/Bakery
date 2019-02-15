@@ -156,28 +156,28 @@
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="password" id="pdesc" class="form-control">
+                                                        <input type="text" id="pdesc" class="form-control">
                                                         <label class="form-label">Product Description: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="password" id="price" class="form-control">
+                                                        <input type="number" id="price" class="form-control">
                                                         <label class="form-label">Price: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="password" id="qty" class="form-control">
+                                                        <input type="number" id="qty" class="form-control">
                                                         <label class="form-label">Quantity: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="password" id="category" class="form-control">
+                                                        <input type="text" id="category" class="form-control">
                                                         <label class="form-label">Category: </label>
                                                     </div>
                                                 </div>

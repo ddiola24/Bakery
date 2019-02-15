@@ -175,18 +175,12 @@
                                                     </div>
                                                 </div>
 
-                                         <div class="demo-single-button-dropdowns">
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Role <span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="javascript:void(0);">Bread</a></li>
-                                                        <li><a href="javascript:void(0);">Drinks</a></li>
-                                                        <li><a href="javascript:void(0);">Others</a></li>
-                                                    </ul>
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="category" class="form-control">
+                                                        <label class="form-label">Category: </label>
+                                                    </div>
                                                 </div>
-                                        </div>
                                             </form>
                                         </div>
                                         <div class="modal-footer">

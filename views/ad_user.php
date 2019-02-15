@@ -182,14 +182,13 @@
                                                     </div>
                                                 </div>
 
-                                                <div>
-                                                    <select>
-                                                    <option value="0">Role:</option>
-                                                    <option value="1">Admin</option>
-                                                    <option value="2">Cashier</option>
-                                                    </select>
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="role" class="form-control">
+                                                        <label class="form-label">Role: </label>
+                                                    </div>
                                                 </div>
-                                        
+
                                             </form>
                                         </div>
                                         <div class="modal-footer">

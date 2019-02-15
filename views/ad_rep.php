@@ -136,61 +136,6 @@
                             <h2>
                                 PRODUCT TABLE
                             </h2>
-                            <br>
-                            <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">ADD PRODUCT</button>
-                            <!-- Default Size -->
-                            <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="defaultModalLabel">PRODUCT DETAILS</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                             <form>
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" id="pname" class="form-control">
-                                                        <label class="form-label">Product Name: </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" id="pdesc" class="form-control">
-                                                        <label class="form-label">Product Description: </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="number" id="price" class="form-control">
-                                                        <label class="form-label">Price: </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="number" id="qty" class="form-control">
-                                                        <label class="form-label">Quantity: </label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" id="category" class="form-control">
-                                                        <label class="form-label">Category: </label>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
-                                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
-                                        </div>
-                                    </div>
-                                </div>
-                          </div>
-                          <!-- #END Defult Size -->
                         </div>
                         <div class="body">
                             <div class="table-responsive">

@@ -1,8 +1,15 @@
-<?php session_start();  
-    include "../controllers/transactionFucntions.php"; 
+<?php session_start(); 
 
+if( !isset($_SESSION['username']) && !isset($_SESSION['password']) && $_SESSION['role'] != 'cashier'){
+  header("location: index.php");
+}if($_SESSION['role'] != 'cashier'){
+  header("location: index.php");  
+}
+unset($_SESSION['page']);
 $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
-
+include "../controllers/transactionFucntions.php"; 
+$db = new userModel();
+$data =$db->getuser($_SESSION['username']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -173,6 +180,7 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                                                 <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-amber">
                                                     <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
                                                     <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                                    <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                     <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
                                                 </button>
                                             </form>
@@ -183,7 +191,7 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                                     <!-- #END BREAD -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="drinks">
-                                    <!-- DRINKS -->
+                                    <!-- PROMO ITEMS -->
                                     <div class="body">
                                         <div class="row clearfix">
                                             <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrink as $index => $drinks): ?>
@@ -191,6 +199,7 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                                                 <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-indigo">
                                                     <div class="color-name"><?php echo $drinks['pname']." ₱".$drinks['price']."/pcs"; ?></div>
                                                     <input type="hidden" name="pid" value="<?php echo $drinks['pid']; ?>">
+                                                     <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                     <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
                                                 </button>
                                             </form>
@@ -209,6 +218,7 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                                                 <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-teal">
                                                     <div class="color-name"><?php echo $others['pname']." ₱".$others['price']."/pcs"; ?></div>
                                                     <input type="hidden" name="pid" value="<?php echo $others['pid']; ?>">
+                                                    <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                     <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
                                                 </button>
                                             </form>
@@ -244,11 +254,13 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                                     <tr>
                                         <td>Amount Due: </td>
                                         <td><?php echo "₱".$total['grandtotal']; ?> </td>
+                                        <input type="hidden" name="grandtotal" value="<?php echo $total['grandtotal']; ?>">
                                     </tr>
                                     
                                     <tr>
                                         <td>Customer Name: </td>
-                                        <td><input type="text" name="payment"></td>
+                                        <td><input type="text" name="customername"></td>
+                                        <input hidden name="uid" value="<?php echo $data->uid; ?>"></td>
                                     </tr>
                                     <tr>
                                         <td>Payment Amount: </td>
@@ -261,7 +273,7 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
                         
                         <div class="modal-footer">
 
-                            <button id="myBtn" type="submit" class="btn btn-link waves-effect">PAY</button>
+                            <button id="myBtn" type="submit" name="submit" value="pay" class="btn btn-link waves-effect">PAY</button>
                             <button type="button"  class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
                         </div>
                     </div>

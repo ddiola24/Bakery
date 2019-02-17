@@ -1,3 +1,13 @@
+<?php include "../controllers/signInFunction.php";
+if(isset($_SESSION['role']) && ($_SESSION['role'] == "collector")){
+  header('Location:  views/c_home.php');
+}if(isset($_SESSION['role']) && ($_SESSION['role'] == "admin")){
+  header('Location: views/a_home.php');
+}else{
+session_start();
+session_destroy(); 
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -33,7 +43,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="sign_in" method="POST">
+                <form id="sign_in" method="POST" action="<?php $_PHP_SELF?>">
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
@@ -53,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                            <button class="btn btn-block bg-pink waves-effect" type="submit" name="submit" value="login">SIGN IN</button>
                         </div>
                     </div>
                 </form>

@@ -1,3 +1,14 @@
+<?php session_start(); 
+print_r($_SESSION['role']);
+if( !isset($_SESSION['username']) && !isset($_SESSION['password']) && $_SESSION['role'] != 'admin'){
+  header("location: index.php");
+} 
+unset($_SESSION['page']);
+$_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
+include "../controllers/transactionFucntions.php"; 
+$db = new userModel();
+$data =$db->getuser($_SESSION['username']);
+?>
 <!DOCTYPE html>
 <html>
 

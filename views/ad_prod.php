@@ -148,18 +148,59 @@ $data =$db->getuser($_SESSION['username']);
                             </h2>
                             <br>
                             <button type="button" class="btn btn-default waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">ADD PRODUCT</button>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <!-- Default Size -->
+                            <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="defaultModalLabel">PRODUCT DETAILS</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                             <form>
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="pname" class="form-control">
+                                                        <label class="form-label">Product Name: </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="password" id="pdesc" class="form-control">
+                                                        <label class="form-label">Product Description: </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="price" class="form-control">
+                                                        <label class="form-label">Price: </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="number" id="qty" class="form-control">
+                                                        <label class="form-label">Quantity: </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group form-float">
+                                                    <div class="form-line">
+                                                        <input type="text" id="category" class="form-control">
+                                                        <label class="form-label">Category: </label>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                                            <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                          <!-- #END Defult Size -->
                         </div>
                         <div class="body">
                             <div class="table-responsive">
@@ -185,7 +226,7 @@ $data =$db->getuser($_SESSION['username']);
                                     <tbody>
                                         <tr>
                                             <td>Pandesal</td>
-                                            <td>Yummy/td>
+                                            <td>Yummy</td>
                                             <td>5</td>
                                             <td>2</td>
                                             <td>Bread</td>

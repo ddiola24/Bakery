@@ -31,6 +31,9 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- JQuery DataTable Css -->
+    <link href="../plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
 
@@ -135,8 +138,54 @@ $data =$db->getuser($_SESSION['username']);
 
     <section class="content">
         <div class="container-fluid">
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                PRODUCT TABLE
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                                    <thead>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Description</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Product Description</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Category</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Pandesal</td>
+                                            <td>Yummy</td>
+                                            <td>5</td>
+                                            <td>2</td>
+                                            <td>Bread</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <!-- #END Exportable Table -->
 
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -155,6 +204,18 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
+    <script src="../js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

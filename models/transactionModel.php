@@ -52,9 +52,9 @@ class transactionModel extends DBconnection {
 		}return "101";
 	}
 	function addsalesdetail($sid,$order){
-		if($order['promo'] == "lima20"){
-			if($order['orderqty'] >)
-		}
+		// if($order['promo'] == "lima20"){
+		// 	if($order['orderqty'] >)
+		// }
 		$query="INSERT INTO `sales_detail`(`sid`, `pid`, `qty`) VALUES (\"".$sid."\",".$order['prodid'].",".$order['orderqty'].")";
 		print_r($query);
 		$result = mysqli_query($this->conn, $query);

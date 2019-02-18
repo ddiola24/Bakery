@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2019 at 01:32 AM
+-- Generation Time: Feb 18, 2019 at 03:11 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -70,9 +70,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`oid`, `uid`, `pid`, `qty`) VALUES
-(123, NULL, 11, 1),
-(124, NULL, 11, 2),
-(125, NULL, 11, 3);
+(15, 14322, 321, 1),
+(16, 14322, 321, 12),
+(17, 14322, 1312, 13);
 
 -- --------------------------------------------------------
 
@@ -87,6 +87,7 @@ CREATE TABLE `products` (
   `price` decimal(19,2) NOT NULL,
   `qty` int(11) DEFAULT NULL,
   `category` enum('drink','bread','others','') NOT NULL,
+  `promo` enum('discount','lima20','none') NOT NULL DEFAULT 'none',
   `dateCreated` datetime NOT NULL,
   `dateUpdated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -95,19 +96,11 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`pid`, `pname`, `pdesc`, `price`, `qty`, `category`, `dateCreated`, `dateUpdated`) VALUES
-(11, 'Cake', 'Yummy!', '13.00', 0, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:37:44'),
-(12, 'pandesal', 'yummy!', '12.00', 12, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:18:59'),
-(1212, 'dasd', 'dsad', '121.00', 145, 'others', '0000-00-00 00:00:00', '2019-02-15 00:27:10'),
-(12312, 'Coke', '', '12.00', 100, 'drink', '2019-02-15 00:00:00', '2019-02-14 21:38:46'),
-(12313, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:37'),
-(12314, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:40'),
-(12315, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:42'),
-(12316, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:43'),
-(12317, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:44'),
-(12318, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:44'),
-(12319, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:46'),
-(12320, 'dasd', 'ffdsf', '12.00', NULL, 'bread', '2019-02-15 00:00:00', '2019-02-14 21:39:47');
+INSERT INTO `products` (`pid`, `pname`, `pdesc`, `price`, `qty`, `category`, `promo`, `dateCreated`, `dateUpdated`) VALUES
+(321, 'Pandesal', 'Yummy!!!', '10.00', 13, 'bread', 'none', '2019-02-15 00:00:00', '2019-02-16 14:31:47'),
+(435, 'Penut Butter', 'Sticky!', '50.00', 38, '', 'none', '2019-02-15 00:00:00', '2019-02-16 14:32:19'),
+(1242, 'Coke', 'Sparkling!', '15.00', -15, '', 'none', '2019-02-15 00:00:00', '2019-02-16 14:32:19'),
+(1312, 'Star Bread', 'Lami~', '5.00', 38, 'bread', 'lima20', '2019-02-15 00:00:00', '2019-02-16 14:31:47');
 
 -- --------------------------------------------------------
 
@@ -116,14 +109,28 @@ INSERT INTO `products` (`pid`, `pname`, `pdesc`, `price`, `qty`, `category`, `da
 --
 
 CREATE TABLE `sales` (
-  `sid` int(11) NOT NULL,
+  `sid` varchar(30) NOT NULL,
   `uid` int(11) NOT NULL,
-  `total` double NOT NULL,
-  `tax` int(11) NOT NULL,
-  `payment` int(11) NOT NULL,
-  `paymentChange` int(11) NOT NULL,
+  `total` decimal(19,2) NOT NULL,
+  `tax` decimal(19,2) NOT NULL,
+  `payment` decimal(19,2) NOT NULL,
+  `paymentChange` decimal(19,2) NOT NULL,
+  `description` varchar(30) NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sales`
+--
+
+INSERT INTO `sales` (`sid`, `uid`, `total`, `tax`, `payment`, `paymentChange`, `description`, `update_time`) VALUES
+('1d67f', 14322, '120.00', '14.40', '123.00', '3.00', 'John Lemuel Suarez', '2019-02-15 09:25:27'),
+('506b2', 14322, '60.00', '7.20', '60.00', '0.00', '', '2019-02-15 09:51:39'),
+('746eb', 14322, '60.00', '7.20', '60.00', '0.00', '', '2019-02-15 09:51:39'),
+('8399c', 14322, '475.00', '57.00', '500.00', '25.00', '', '2019-02-15 09:26:02'),
+('cc729', 14322, '475.00', '57.00', '500.00', '25.00', '', '2019-02-15 09:26:02'),
+('e7c25', 14322, '900.00', '108.00', '1000.00', '100.00', 'John Lemuel Suarez', '2019-02-15 09:16:25'),
+('f1e8c', 14322, '900.00', '108.00', '1221212.00', '1220312.00', 'John Lemuel Suarez', '2019-02-15 09:21:15');
 
 -- --------------------------------------------------------
 
@@ -133,27 +140,51 @@ CREATE TABLE `sales` (
 
 CREATE TABLE `sales_detail` (
   `sdid` int(11) NOT NULL,
-  `sid` int(11) NOT NULL,
+  `sid` varchar(30) NOT NULL,
   `pid` int(11) NOT NULL,
   `qty` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sales_detail`
+--
+
+INSERT INTO `sales_detail` (`sdid`, `sid`, `pid`, `qty`) VALUES
+(6, 'e7c25', 321, 12),
+(7, 'e7c25', 435, 12),
+(8, 'e7c25', 1242, 12),
+(9, 'f1e8c', 321, 12),
+(10, 'f1e8c', 435, 12),
+(11, 'f1e8c', 1242, 12),
+(12, '1d67f', 321, 12),
+(13, '8399c', 321, 13),
+(14, '8399c', 1242, 23),
+(15, '506b2', 1312, 12);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `users` (
-  `uname` varchar(20) NOT NULL,
+CREATE TABLE `user` (
+  `username` varchar(20) NOT NULL,
   `uid` int(10) NOT NULL,
-  `pwd` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `fname` varchar(20) NOT NULL,
   `mname` varchar(20) NOT NULL,
   `lname` varchar(20) NOT NULL,
   `regDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `role` enum('admin','cashier') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`username`, `uid`, `password`, `fname`, `mname`, `lname`, `regDate`, `role`) VALUES
+('admin', 1432, 'admin', 'admin', 'admin', 'admin', '2019-02-15 03:21:15', 'admin'),
+('von', 14322, 'von', 'von', 'von', 'von', '2019-02-15 03:22:35', 'cashier');
 
 --
 -- Indexes for dumped tables
@@ -202,9 +233,9 @@ ALTER TABLE `sales_detail`
   ADD KEY `sid` (`sid`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`uid`);
 
 --
@@ -227,31 +258,25 @@ ALTER TABLE `logs`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12321;
-
---
--- AUTO_INCREMENT for table `sales`
---
-ALTER TABLE `sales`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89849;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1313;
 
 --
 -- AUTO_INCREMENT for table `sales_detail`
 --
 ALTER TABLE `sales_detail`
-  MODIFY `sdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `sdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14323;
 
 --
 -- Constraints for dumped tables
@@ -262,7 +287,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `logs`
   ADD CONSTRAINT `logs_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `products` (`pid`),
-  ADD CONSTRAINT `logs_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
+  ADD CONSTRAINT `logs_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`);
 
 --
 -- Constraints for table `orders`
@@ -274,7 +299,7 @@ ALTER TABLE `orders`
 -- Constraints for table `sales`
 --
 ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`uid`);
+  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`uid`);
 
 --
 -- Constraints for table `sales_detail`

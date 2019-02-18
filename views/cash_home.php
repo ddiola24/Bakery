@@ -41,7 +41,7 @@ $data =$db->getuser($_SESSION['username']);
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-blue">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -73,15 +73,15 @@ $data =$db->getuser($_SESSION['username']);
         </div>
     </div>
     <!-- #END# Search Bar -->
-    <!-- Top Bar -->
+       <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand">Franz Bakeshoppe & Refreshment</a>
+                <img src="../favicon.png" width="7%" height="">
+                <a class="navbar-brand" href="../ad_home.php"><p style="font-size:20px; font-weight:bolder; margin-top:-7px;">Franz Bakeshoppe & <br> Refreshment</p></a>
             </div>
-        </div>
+            <a href="index.php"><button class="btn btn-danger waves-effect"> Logout </button></a>
     </nav>
     <!-- #Top Bar -->
     <section>
@@ -274,7 +274,7 @@ $data =$db->getuser($_SESSION['username']);
                         <div class="modal-footer">
 
                             <button id="myBtn" type="submit" name="submit" value="pay" class="btn btn-link waves-effect">PAY</button>
-                            <button type="button"  class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+                            <!-- <button type="button"  class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button> -->
                         </div>
                     </div>
                 </div>
@@ -304,20 +304,23 @@ $data =$db->getuser($_SESSION['username']);
     <script src="../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
     <!-- Jquery Validation Plugin Css -->
-    <script src="../../plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="../plugins/jquery-validation/jquery.validate.js"></script>
 
     <!-- JQuery Steps Plugin Js -->
-    <script src="../../plugins/jquery-steps/jquery.steps.js"></script>
+    <script src="../plugins/jquery-steps/jquery.steps.js"></script>
 
     <!-- Sweet Alert Plugin Js -->
-    <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../plugins/sweetalert/sweetalert.min.js"></script>
 
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
 
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="../plugins/bootstrap-notify/bootstrap-notify.js"></script>
+
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
-    <script src="../../js/pages/forms/form-validation.js"></script>
+    <script src="../js/pages/forms/form-validation.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

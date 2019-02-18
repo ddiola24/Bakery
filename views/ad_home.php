@@ -15,7 +15,7 @@ $data =$db->getuser($_SESSION['username']);
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>ADMIN</title>
+    <title>Bakery | Admin</title>
     <!-- Favicon-->
     <link rel="icon" href="../favicon.ico" type="image/x-icon">
 
@@ -39,7 +39,7 @@ $data =$db->getuser($_SESSION['username']);
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-orange">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -73,23 +73,22 @@ $data =$db->getuser($_SESSION['username']);
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../../index.html">Franz Bakeshoppe & Refreshment</a>
+                <img src="../favicon.png" width="7%" height="">
+                <a class="navbar-brand" href="../ad_home.php"><p style="font-size:20px; font-weight:bolder; margin-top:-7px;">Franz Bakeshoppe & <br> Refreshment</p></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                 </ul>
             </div>
-        </div>
     </nav>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- Menu -->
+           <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
@@ -101,20 +100,26 @@ $data =$db->getuser($_SESSION['username']);
                     </li>
                     <li>
                         <a href="ad_prod.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">local_mall</i>
                             <span>Products</span>
                         </a>
                     </li>
                     <li>
                         <a href="ad_user.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">face</i>
                             <span>User</span>
                         </a>
                     </li>
                     <li>
                         <a href="ad_rep.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">description</i>
                             <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php">
+                            <i class="material-icons">arrow_back</i>
+                            <span>Logout</span>
                         </a>
                     </li>
                 </ul>
@@ -136,6 +141,65 @@ $data =$db->getuser($_SESSION['username']);
 
     <section class="content">
         <div class="container-fluid">
+            <div class="block-header">
+                <h2>
+                    ChartJS
+                    <small>Taken from <a href="https://github.com/chartjs/Chart.js" target="_blank">github.com/chartjs/Chart.js</a></small>
+                </h2>
+            </div>
+            <div class="row clearfix">
+                <!-- Line Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>LINE CHART</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="line_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Line Chart -->
+                <!-- Bar Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>BAR CHART</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="bar_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Bar Chart -->
+            </div>
+
+            <div class="row clearfix">
+                <!-- Radar Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>RADAR CHART</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="radar_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Radar Chart -->
+                <!-- Pie Chart -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>PIE CHART</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="pie_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Pie Chart -->
+            </div>
         </div>
     </section>
 
@@ -154,8 +218,12 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Waves Effect Plugin Js -->
     <script src="../plugins/node-waves/waves.js"></script>
 
+    <!-- Chart Plugins Js -->
+    <script src="../plugins/chartjs/Chart.bundle.js"></script>
+
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
+    <script src="../js/pages/charts/chartjs.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

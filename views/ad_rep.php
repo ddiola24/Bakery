@@ -41,7 +41,7 @@ $data =$db->getuser($_SESSION['username']);
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-orange">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -73,25 +73,24 @@ $data =$db->getuser($_SESSION['username']);
         </div>
     </div>
     <!-- #END# Search Bar -->
-    <!-- Top Bar -->
+ <!-- Top Bar -->
     <nav class="navbar">
-        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../../index.html">Franz Bakeshoppe & Refreshment</a>
+                <img src="../favicon.png" width="7%" height="">
+                <a class="navbar-brand" href="../ad_home.php"><p style="font-size:20px; font-weight:bolder; margin-top:-7px;">Franz Bakeshoppe & <br> Refreshment</p></a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                 </ul>
             </div>
-        </div>
     </nav>
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- Menu -->
+           <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
@@ -103,20 +102,26 @@ $data =$db->getuser($_SESSION['username']);
                     </li>
                     <li>
                         <a href="ad_prod.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">local_mall</i>
                             <span>Products</span>
                         </a>
                     </li>
                     <li>
                         <a href="ad_user.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">face</i>
                             <span>User</span>
                         </a>
                     </li>
                     <li>
                         <a href="ad_rep.php">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">description</i>
                             <span>Reports</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php">
+                            <i class="material-icons">arrow_back</i>
+                            <span>Logout</span>
                         </a>
                     </li>
                 </ul>

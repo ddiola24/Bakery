@@ -34,6 +34,12 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Animation Css -->
     <link href="../plugins/animate-css/animate.css" rel="stylesheet" />
 
+    <!-- Bootstrap Select Css -->
+    <link href="../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Multi Select Css -->
+    <link href="../plugins/multi-select/css/multi-select.css" rel="stylesheet">
+
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
 
@@ -177,15 +183,22 @@ $data =$db->getuser($_SESSION['username']);
                                         <div class="row clearfix">
                                             <?php error_reporting(E_ERROR | E_PARSE); foreach ($getbread as $index => $bread): ?>
                                             <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-amber">
-                                                    <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                    <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                    <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-amber">
+                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
+                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
+                                                                <br>
+                                                <select name="promo"class="form-control show-tick">
+                                                    <option value="">-- Select Promo --</option>
+                                                    <option value="PAN20">5 for 20</option>
+                                                    <option >Soon</option>s
+                                                </select>
+                                                           
+                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                 </button>
                                             </form>
                                              <?php endforeach; ?>
-
+                                             
                                         </div>
                                     </div>
                                     <!-- #END BREAD -->
@@ -194,13 +207,20 @@ $data =$db->getuser($_SESSION['username']);
                                     <!-- PROMO ITEMS -->
                                     <div class="body">
                                         <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrink as $index => $drinks): ?>
+                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrink as $index => $bread): ?>
                                             <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-indigo">
-                                                    <div class="color-name"><?php echo $drinks['pname']." ₱".$drinks['price']."/pcs"; ?></div>
-                                                    <input type="hidden" name="pid" value="<?php echo $drinks['pid']; ?>">
-                                                     <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-blue">
+                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
+                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
+                                                                <br>
+                                                <select name="promo"class="form-control show-tick">
+                                                    <option value="">-- Select Promo --</option>
+                                                    <option value="PAN20">5 for 20</option>
+                                                    <option >Soon</option>s
+                                                </select>
+                                                           
+                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                 </button>
                                             </form>
                                              <?php endforeach; ?>
@@ -210,23 +230,30 @@ $data =$db->getuser($_SESSION['username']);
                                     <!-- #END DRINK -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="others">
-                                    <!-- DRINKS -->
+                                    <!-- OTHERS -->
                                     <div class="body">
                                         <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $others): ?>
+                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
                                             <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button style="border-right: 50px; border-radius: 10px;" type="submit" name="submit" value="addorder"   class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-teal">
-                                                    <div class="color-name"><?php echo $others['pname']." ₱".$others['price']."/pcs"; ?></div>
-                                                    <input type="hidden" name="pid" value="<?php echo $others['pid']; ?>">
-                                                    <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                    <div class="color-code"><input min="0" required type="number" name="qty" style="color: red; width: 100px"></div>
+                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-green">
+                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
+                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
+                                                                <br>
+                                                <select name="promo"class="form-control show-tick">
+                                                    <option value="">-- Select Promo --</option>
+                                                    <option value="PAN20">5 for 20</option>
+                                                    <option >Soon</option>s
+                                                </select>
+                                                           
+                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
+                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                 </button>
                                             </form>
                                              <?php endforeach; ?>
 
                                         </div>
                                     </div>
-                                    <!-- #END DRINK -->
+                                    <!-- #END OTHERS -->
                                 </div>
                             </div>
                                 <!-- #END Tab -->
@@ -280,8 +307,8 @@ $data =$db->getuser($_SESSION['username']);
                 </div>
     </div>
      </form>
-
  <?php endif; ?>
+
     <script>
     var input = document.getElementById("myInput");
     input.addEventListener("keyup", function(event) {
@@ -293,6 +320,9 @@ $data =$db->getuser($_SESSION['username']);
     </script>
     <!-- Jquery Core Js -->
     <script src="../plugins/jquery/jquery.min.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="../plugins/bootstrap/js/bootstrap.js"></script>
@@ -321,6 +351,7 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/forms/form-validation.js"></script>
+    <script src="../js/pages/ui/modals.js"></script>
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>

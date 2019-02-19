@@ -26,6 +26,8 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
+    <link href="../plugins/bootstrap/css/icon.css" rel="stylesheet">
+
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
 

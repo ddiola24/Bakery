@@ -20,7 +20,33 @@ class transactionModel extends DBconnection {
 		}return TRUE;
 	}
 	function getorder(){
-		$query = "SELECT oid,orders.pid as prodid,SUM(orders.qty) as orderqty,pname,pdesc,price*SUM(orders.qty) as subtotal,products.qty as prodqty,promo FROM `orders` JOIN products ON products.pid = orders.pid GROUP BY prodid";
+
+		$query = "SELECT oid,orders.pid as prodid,SUM(orders.qty) as orderqty,pname,pdesc,price,((price)*SUM(orders.qty)) as subtotal,products.qty as prodqty,promo FROM `orders` JOIN products ON products.pid = orders.pid GROUP BY prodid";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;	
+	}
+	function getorderpromo(){
+
+		$query = "SELECT oid,orders.pid as prodid,SUM(orders.qty) as orderqty,pname,pdesc,price,(price-1)*SUM(orders.qty) as subtotal,products.qty as prodqty,promo FROM `orders` JOIN products ON products.pid = orders.pid GROUP BY prodid";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;	
+	}
+	function checkprodprice($id){
+		$query = "SELECT price FROM products WHERE pid = $id";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result) {
 				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
@@ -33,6 +59,18 @@ class transactionModel extends DBconnection {
 	}
 	function gettotal(){
 		$query = "SELECT SUM(subtotal) as grandtotal FROM (SELECT oid,orders.pid as prodid,SUM(orders.qty) as orderqty,pname,pdesc,price*SUM(orders.qty) as subtotal,products.qty as prodqty FROM `orders` JOIN products ON products.pid = orders.pid GROUP BY prodid) as aa";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;	
+	}
+	function gettotalpromo(){
+		$query = "SELECT SUM(subtotal) as grandtotal FROM (SELECT oid,orders.pid as prodid,SUM(orders.qty) as orderqty,pname,pdesc,(price-1)*SUM(orders.qty) as subtotal,products.qty as prodqty FROM `orders` JOIN products ON products.pid = orders.pid GROUP BY prodid) as aa";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result) {
 				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
@@ -71,16 +109,13 @@ class transactionModel extends DBconnection {
 			return FALSE;
 		}return TRUE;
 	}
-
-
-
 	
 }
 class userModel extends DBconnection {
 	//user function
 	function adduser($user){
-		$query="INSERT INTO `user`(`uname`, `pwd`, `fname`, `mname`, `lname`, `role`) 
-		VALUES (".$user['uname'].",".$user['pwd'].",".$user['fname'].",".$user['mname'].",".$user['lname'].",".$user['uname'].")";
+		$query="INSERT INTO `user`(`username`,`password`, `fname`, `mname`, `lname`, `role`) 
+		VALUES (\"".$user['uname']."\",\"".$user['pwd']."\",\"".$user['fname']."\",\"".$user['mname']."\",\"".$user['lname']."\",\"".$user['role']."\")";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result){
 			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
@@ -97,7 +132,7 @@ class userModel extends DBconnection {
 	}
 	function updateuser($user){
 		$query="UPDATE `users` 
-		SET `uname`=".$user['uname'].",`pwd`=".$user['pwd'].",`fname`=".$user['fname'].",`mname`=".$user['mname'].",`lname`=".$user['mname']." WHERE uid = ".$user['uid']."";
+		SET `username`=\"".$user['username']."\",`password`=\"".$user['password']."\",`fname`=\"".$user['fname']."\",`mname`=\"".$user['mname']."\",`lname`=\"".$user['mname'].",`role`=\"".$user['role']." WHERE uid = \"".$user['uid']."";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result) {
             die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
@@ -116,8 +151,10 @@ class userModel extends DBconnection {
     }
 }
 class productModel extends DBconnection {
+	//PRODUCTS
 	function addproduct($product){
-		$query="INSERT INTO `products`(`pname`, `pdesc`, `price`, `qty`, `dateCreated`) VALUES (".$product['pname'].",".$product['pdesc'].",".$product['price'].",".$product['qty'].",".$product['date'].")";
+		$query="INSERT INTO `products`(`pname`, `pdesc`, `price`, `qty`, `category`) VALUES (\"".$product['pname']."\",\"".$product['pdescs']."\",\"".$product['price']."\",\"".$product['qty']."\",\"".$product['category']."\")";
+		print_r($query);
 		$result = mysqli_query($this->conn, $query);
 		if(!$result){
 			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
@@ -140,6 +177,19 @@ class productModel extends DBconnection {
             return FALSE;
         }return TRUE;
 	}
+	function getproducts(){
+		$query="SELECT * FROM `products`";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;	
+	}
+
 	function getbread(){
 		$query="SELECT * FROM products WHERE category = 'bread'";
 		$result = mysqli_query($this->conn, $query);

@@ -5,6 +5,7 @@ if( !isset($_SESSION['username']) && !isset($_SESSION['password']) && $_SESSION[
 unset($_SESSION['page']);
 $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
 include "../controllers/transactionFucntions.php"; 
+include "modal.php";
 $db = new userModel();
 $data =$db->getuser($_SESSION['username']);
 ?>
@@ -24,6 +25,7 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../plugins/bootstrap/css/icon.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
@@ -36,6 +38,12 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Custom Css -->
     <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Multi Select Css -->
+    <link href="../plugins/multi-select/css/multi-select.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="../css/themes/all-themes.css" rel="stylesheet" />
@@ -161,58 +169,60 @@ $data =$db->getuser($_SESSION['username']);
                                             <h4 class="modal-title" id="defaultModalLabel">USER DETAILS</h4>
                                         </div>
                                         <div class="modal-body">
-                                             <form>
+                                             <form action="<?php $_PHP_SELF ?>" method="POST">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" id="uname" class="form-control">
+                                                        <input type="text" id="uname" name="uname" class="form-control">
                                                         <label class="form-label">Username: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="password" id="pwd" class="form-control">
+                                                        <input type="password" id="pwd" name="pwd" class="form-control">
                                                         <label class="form-label">Password: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" id="fname" class="form-control">
+                                                        <input type="text" id="fname" name="fname" class="form-control">
                                                         <label class="form-label">First Name: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" id="lname" class="form-control">
+                                                        <input type="text" id="lname" name="lname" class="form-control">
                                                         <label class="form-label">Last Name: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input type="text" id="mname" class="form-control">
+                                                        <input type="text" id="mname" name="mname" class="form-control">
                                                         <label class="form-label">Middle Name: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
-                                                    <div class="form-line">
-                                                        <input type="text" id="role" class="form-control">
-                                                        <label class="form-label">Role: </label>
-                                                    </div>
+                                                    <select name="role" class="form-control show-tick">
+                                                        <option value="">-- Please Role --</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="cashier">Cashier</option>s
+                                                    </select>
                                                 </div>
 
-                                            </form>
+                                            
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                                            <button type="submit" name="submit" value="adduser" class="btn btn-link waves-effect">SAVE CHANGES</button>
                                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
                                         </div>
                                     </div>
                                 </div>
                           </div>
+                          </form>
                           <!-- #END Defult Size -->
                         </div>
                         <div class="body">
@@ -226,18 +236,9 @@ $data =$db->getuser($_SESSION['username']);
                                             <th>Middle Name</th>
                                             <th>Last Name</th>
                                             <th>Role</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>First Name</th>
-                                            <th>Middle Name</th>
-                                            <th>Last Name</th>
-                                            <th>Role</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         <tr>
                                             <td>vd24</td>
@@ -246,6 +247,7 @@ $data =$db->getuser($_SESSION['username']);
                                             <td>man</td>
                                             <td>dian</td>
                                             <td>Cashier</td>
+                                            <td><button data-target="#updateuser" data-toggle="modal" type="button" class="btn btn-info">UPDATE</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -276,6 +278,9 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
 
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>

@@ -7,6 +7,8 @@ $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
 include "../controllers/transactionFucntions.php"; 
 $db = new userModel();
 $data =$db->getuser($_SESSION['username']);
+
+//print_r($data->uid);
 ?>
 <!DOCTYPE html>
 <html>
@@ -185,7 +187,7 @@ $data =$db->getuser($_SESSION['username']);
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input required="" type="text" id="price" name="price" class="form-control">
+                                                        <input required="" type="number" id="price" name="price" class="form-control">
                                                         <label class="form-label">Price: </label>
                                                     </div>
                                                 </div>
@@ -201,13 +203,14 @@ $data =$db->getuser($_SESSION['username']);
                                                     <select required="" name="category" class="form-control show-tick">
                                                         <option value="">-- Please Category --</option>
                                                         <option value="bread">Bread</option>
-                                                        <option value="drinks">Drinks</option>
+                                                        <option value="drink">Drinks</option>
                                                         <option value="others">Others</option>
                                                     </select>
                                                 </div>
                                             
                                         </div>
                                         <div class="modal-footer">
+                                             <input  hidden="hidden" name="uid" value="<?php echo $data->uid; ?>" >
                                             <button type="submit" name="submit" value="addprod" class="btn btn-link waves-effect">SAVE CHANGES</button>
                                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
                                         </div>
@@ -241,9 +244,16 @@ $data =$db->getuser($_SESSION['username']);
                                             <td>
                                                 <form action="<?php $_PHP_SELF ?>" method="POST">
                                                 <input  hidden="hidden" name="pid" value="<?php echo $product['pid']; ?>" >
-                                                <button name="submit" value="deleteprod" type="submit" class="btn btn-info">DELETE</button>
-                                                <button name="submit" value="updateprod" type="submit" class="btn btn-info">UPDATE</button>
+                                                <input  hidden="hidden" name="pname" value="<?php echo $product['pname']; ?>" >
+                                                <input  hidden="hidden" name="pdesc" value="<?php echo $product['pdesc']; ?>" >
+                                                <input  hidden="hidden" name="price" value="<?php echo $product['price']; ?>" >
+                                                <input  hidden="hidden" name="qty" value="<?php echo $product['qty']; ?>" >
+                                                <input  hidden="hidden" name="category" value="<?php echo $product['category']; ?>" >
+                                                <input  hidden="hidden" name="uid" value="<?php echo $data->uid; ?>" >
+                                                <button onclick="return confirm('Are you sure you want to delete <?php echo $product['pname']."?" ?>');" name="submit" value="deleteprod" type="submit" class="btn btn-danger">DELETE</button>
+                                                <button name="submit" value="restockmodal" type="submit" class="btn btn-info">RESTOCK</button>
                                                 </form>
+                                                
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -276,6 +286,7 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
+   
 
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -293,6 +304,12 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
+    <?php include "modal.php"; ?>
+    <script>
+    $(function() {
+    $('<?php echo $_SESSION['modal']; ?>').modal();//if you want you can have a timeout to hide the window after x seconds
+    });
+    </script>
 </body>
 
 </html>

@@ -131,8 +131,8 @@ class userModel extends DBconnection {
         }return TRUE;
 	}
 	function updateuser($user){
-		$query="UPDATE `users` 
-		SET `username`=\"".$user['username']."\",`password`=\"".$user['password']."\",`fname`=\"".$user['fname']."\",`mname`=\"".$user['mname']."\",`lname`=\"".$user['mname'].",`role`=\"".$user['role']." WHERE uid = \"".$user['uid']."";
+		$query="UPDATE `user` SET `username`=\"".$user['username']."\",`password`=\"".$user['password']."\",`fname`=\"".$user['fname']."\",`mname`=\"".$user['mname']."\",`lname`=\"".$user['lname']."\",`role`=\"".$user['role']."\" WHERE uid = \"".$user['uid']."\"";
+		print_r($query);
 		$result = mysqli_query($this->conn, $query);
 		if(!$result) {
             die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
@@ -149,12 +149,34 @@ class userModel extends DBconnection {
         $row = $result->fetch_object();
         return $row;
     }
+    function getuserid($id){
+        $query = "SELECT * FROM user
+				WHERE uid = $id LIMIT 1";
+        $result = mysqli_query($this->conn, $query);
+        $res = array();
+        while ($row = mysqli_fetch_array($result)){
+            array_push($res, $row);
+        }
+        return ($result->num_rows>0)? $res: FALSE;
+    }
+    function getallusers(){
+        $query = "SELECT * FROM user";
+        $result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;	
+    }
 }
 class productModel extends DBconnection {
 	//PRODUCTS
 	function addproduct($product){
 		$query="INSERT INTO `products`(`pname`, `pdesc`, `price`, `qty`, `category`) VALUES (\"".$product['pname']."\",\"".$product['pdescs']."\",\"".$product['price']."\",\"".$product['qty']."\",\"".$product['category']."\")";
-		print_r($query);
+		//print_r($query);
 		$result = mysqli_query($this->conn, $query);
 		if(!$result){
 			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
@@ -188,6 +210,27 @@ class productModel extends DBconnection {
                 array_push($res, $row);
             }
             return ($result->num_rows>0)? $res: FALSE;	
+	}
+	function getproductid($id){
+		$query="SELECT qty FROM products WHERE pid = $id";
+        $result = mysqli_query($this->conn, $query);
+        if(!$result) {
+            die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+        }
+        $row = $result->fetch_object();
+        return $row;
+	}
+	function getproduct($id){
+		$query="SELECT * FROM products WHERE pid = $id";
+        $result = mysqli_query($this->conn, $query);
+		if(!$result) {
+				die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn));
+			}
+        $res = array();
+            while ($row = mysqli_fetch_array($result)){
+                array_push($res, $row);
+            }
+            return ($result->num_rows>0)? $res: FALSE;
 	}
 
 	function getbread(){
@@ -229,6 +272,23 @@ class productModel extends DBconnection {
 	function updatestock($stock){
 		$query="UPDATE `products` SET `qty`=".($stock['prodqty']-$stock['orderqty'])." WHERE  pid = ".$stock['prodid']."";
 		print_r($query);
+		$result = mysqli_query($this->conn, $query);
+		if(!$result){
+			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
+			return FALSE;
+		}return TRUE;
+	}
+	function updateprodstock($stock){
+		$query="UPDATE `products` SET `qty`=".$stock['total']." WHERE  pid = ".$stock['pid']."";
+		$result = mysqli_query($this->conn, $query);
+		if(!$result){
+			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 
+			return FALSE;
+		}return TRUE;
+	}
+
+	function addlogs($logs){
+		$query="INSERT INTO `logs`(`uid`,`action`, `description`) VALUES (\"".$logs['uid']."\",\"".$logs['action']."\",\"".$logs['description']."\")";
 		$result = mysqli_query($this->conn, $query);
 		if(!$result){
 			die("<strong>WARNING:</strong><br>" . mysqli_error($this->conn)); 

@@ -1,5 +1,13 @@
 ﻿/* Navbar ====================================== */
 @import url(materialize.css);
+
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
 .divider {
   width:5px;
     height:auto;

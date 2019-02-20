@@ -4,9 +4,9 @@ $usr = new userModel();
 $prod = new productModel();
 $submit = isset($_REQUEST['submit'])?$_REQUEST['submit']:NULL;
 $page = isset($_SESSION['page'])?$_SESSION['page']:NULL;
-
 $getproducts = $prod->getproducts();
-//$getusers = $usr->getuser($id);
+$getusers = $usr->getallusers();
+unset($_SESSION['modal']);
 
 
 
@@ -19,12 +19,16 @@ if($page == "cash_home.php"):
 endif;
 
 
+
 if($submit == "addorder"):
 	$order['pid'] = isset($_REQUEST['pid'])?$_REQUEST['pid']:NULL;
 	$order['qty'] = isset($_REQUEST['qty'])?$_REQUEST['qty']:NULL;
 	$order['uid'] = isset($_REQUEST['uid'])?$_REQUEST['uid']:NULL;
 	$order['promo'] = isset($_REQUEST['promo'])?$_REQUEST['promo']:NULL;
 
+	$getproductid = $prod->getproductid($order['pid']);
+
+	if($order['qty'] <= $getproductid):
 	$addorder = $db->addorder($order);
 	$prodprice = $db->checkprodprice($order['pid']);	
 	$price = $prodprice[0]['price'];
@@ -42,7 +46,7 @@ if($submit == "addorder"):
 		$getorder = $db->getorder();
 		$gettotal = $db->gettotal();
 	}
-	
+	endif;
 endif;
 
 if($submit == "removeorder"):
@@ -94,6 +98,7 @@ if($submit == "pay"){
 }
 //ADD PRODUCTS
 if($submit == "addprod"){
+	$product['uid'] = isset($_REQUEST['uid'])?$_REQUEST['uid']:NULL;
 	$product['pname'] = isset($_REQUEST['pname'])?$_REQUEST['pname']:NULL;
 	$product['pdescs'] = isset($_REQUEST['pdescs'])?$_REQUEST['pdescs']:NULL;
 	$product['price'] = isset($_REQUEST['price'])?$_REQUEST['price']:NULL;
@@ -101,13 +106,33 @@ if($submit == "addprod"){
 	$product['category'] = isset($_REQUEST['category'])?$_REQUEST['category']:NULL;
 
 	$addprod = $prod->addproduct($product);
+	if($addprod){
+		$logs['uid'] = $product['uid'];
+		$logs['action'] = "ADD PRODUCT";
+		$logs['description'] = "Product Name: ".$product['pname']." Price: ".$product['price']." Quantity: ".$product['qty']." Category: ".$product['category'];
+		$addlogs = $prod->addlogs($logs);
+	}
 	$getproducts = $prod->getproducts();
 }
 
 if($submit == "deleteprod"){
 	$product['pid'] = isset($_REQUEST['pid'])?$_REQUEST['pid']:NULL;
+	$product['uid'] = isset($_REQUEST['uid'])?$_REQUEST['uid']:NULL;
+	$product['pname'] = isset($_REQUEST['pname'])?$_REQUEST['pname']:NULL;
+	$product['pdescs'] = isset($_REQUEST['pdescs'])?$_REQUEST['pdescs']:NULL;
+	$product['price'] = isset($_REQUEST['price'])?$_REQUEST['price']:NULL;
+	$product['qty'] = isset($_REQUEST['qty'])?$_REQUEST['qty']:NULL;
+	$product['category'] = isset($_REQUEST['category'])?$_REQUEST['category']:NULL;
+
+	print_r($product);
 
 	$deleteprod = $prod->deleteproduct($product['pid']);
+	if($deleteprod){
+		$logs['uid'] = $product['uid'];
+		$logs['action'] = "DELETED PRODUCT";
+		$logs['description'] = "Product Name: ".$product['pname']." Price: ".$product['price']." Quantity: ".$product['qty']." Category: ".$product['category'];
+		$addlogs = $prod->addlogs($logs);
+	}
 	$getproducts = $prod->getproducts();
 }
 
@@ -121,23 +146,51 @@ if($submit == "adduser"){
 	$user['role'] = isset($_REQUEST['role'])?$_REQUEST['role']:NULL;
 
 	$adduser = $usr->adduser($user);
+	$getusers = $usr->getallusers();
 }
 
+if($submit == "updateusermodal"){
+	$user['uid'] = isset($_REQUEST['uid'])?$_REQUEST['uid']:NULL;
+	$getuserid = $usr->getuserid($user['uid']);
+	print_r($getuserid);
+	$_SESSION['modal'] = "#updateuser";
+}
 if($submit == "updateuser"){
-	$user['uname'] = isset($_REQUEST['uname'])?$_REQUEST['uname']:NULL;
+	$user['username'] = isset($_REQUEST['uname'])?$_REQUEST['uname']:NULL;
+	$user['uid'] = isset($_REQUEST['uid'])?$_REQUEST['uid']:NULL;
 	$user['fname'] = isset($_REQUEST['fname'])?$_REQUEST['fname']:NULL;
 	$user['lname'] = isset($_REQUEST['lname'])?$_REQUEST['lname']:NULL;
 	$user['mname'] = isset($_REQUEST['mname'])?$_REQUEST['mname']:NULL;
-	$user['pwd'] = isset($_REQUEST['pwd'])?$_REQUEST['pwd']:NULL;
+	$user['password'] = isset($_REQUEST['pwd'])?$_REQUEST['pwd']:NULL;
 	$user['role'] = isset($_REQUEST['role'])?$_REQUEST['role']:NULL;
+
+	$updateuser = $usr->updateuser($user);
+	$getusers = $usr->getallusers();
+}
+
+if($submit == "restockmodal"){
+	$product['pid'] = isset($_REQUEST['pid'])?$_REQUEST['pid']:NULL;
+	$getproduct = $prod->getproduct($product['pid']);
+	$_SESSION['modal'] = "#restock";
+
+}
+if($submit == "restockprod"){
+	$product['pid'] = isset($_REQUEST['pid'])?$_REQUEST['pid']:NULL;
+	$product['prodqty'] = isset($_REQUEST['qty'])?$_REQUEST['qty']:NULL;
+	$product['stkqty'] = isset($_REQUEST['stkqty'])?$_REQUEST['stkqty']:NULL;
+	$product['total'] = ($product['prodqty']+$product['stkqty']);
+	$password = isset($_REQUEST['password'])?$_REQUEST['password']:NULL;
+
+	if($password != $_SESSION['password']){
+		echo "error";
+	}else{
+		$updateprod = $prod->updateprodstock($product);
+		$getproducts = $prod->getproducts();
+	}	
 }
 
 
 
 	
 ?>
-<script>
-$(function() {
-$("#updateuser").modal();//if you want you can have a timeout to hide the window after x seconds
-});
-</script>
+

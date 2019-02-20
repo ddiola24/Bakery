@@ -5,9 +5,9 @@ if( !isset($_SESSION['username']) && !isset($_SESSION['password']) && $_SESSION[
 unset($_SESSION['page']);
 $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
 include "../controllers/transactionFucntions.php"; 
-include "modal.php";
 $db = new userModel();
 $data =$db->getuser($_SESSION['username']);
+//echo '<pre>' . print_r($_SESSION, TRUE) . '</pre>';
 ?>
 <!DOCTYPE html>
 <html>
@@ -207,16 +207,15 @@ $data =$db->getuser($_SESSION['username']);
 
                                                 <div class="form-group form-float">
                                                     <select name="role" class="form-control show-tick">
-                                                        <option value="">-- Please Role --</option>
-                                                        <option value="admin">Admin</option>
-                                                        <option value="cashier">Cashier</option>s
+                                                        <option selected="selected" value="admin">Admin</option>
+                                                        <option value="cashier">Cashier</option>
                                                     </select>
                                                 </div>
 
                                             
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" name="submit" value="adduser" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                                            <button type="submit" name="submit" value="adduser" class="btn btn-link waves-effect ">SAVE CHANGES</button>
                                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
                                         </div>
                                     </div>
@@ -240,15 +239,24 @@ $data =$db->getuser($_SESSION['username']);
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php error_reporting(E_ERROR | E_PARSE); foreach ($getusers as $index => $users):  ?>
                                         <tr>
-                                            <td>vd24</td>
-                                            <td type="password">vd24</td>
-                                            <td>van</td>
-                                            <td>man</td>
-                                            <td>dian</td>
-                                            <td>Cashier</td>
-                                            <td><button data-target="#updateuser" data-toggle="modal" type="button" class="btn btn-info">UPDATE</button></td>
+                                            <td><?php echo $users['username'] ?></td>
+                                            <td type="password"><?php echo $users['password'] ?></td>
+                                            <td><?php echo $users['fname'] ?></td>
+                                            <td><?php echo $users['mname'] ?></td>
+                                            <td><?php echo $users['lname'] ?></td>
+                                            <td><?php echo $users['role'] ?></td>
+                                            <td>
+                                                <form action="<?php $_PHP_SELF ?>" method="POST">
+                                                <input hidden="" name="uid" value="<?php echo $users['uid']; ?>">
+                                                <button  onclick="return confirm('Are you sure you want to delete <?php echo $users['fname']." ".$users['lname']."?"?>');"  type="submit" name="submit" value="deleteuser" class="btn btn-danger ">DELETE</button>
+                                                <button  type="submit" name="submit" value="updateusermodal" class="btn btn-info ">UPDATE</button>
+                                                </form>
+                                            </td>
                                         </tr>
+                                    <?php endforeach; ?>
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -279,9 +287,6 @@ $data =$db->getuser($_SESSION['username']);
     <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
 
-    <!-- Select Plugin Js -->
-    <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
-
     <!-- Jquery DataTable Plugin Js -->
     <script src="../plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="../plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
@@ -292,9 +297,16 @@ $data =$db->getuser($_SESSION['username']);
     <script src="../plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
     <script src="../plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="../plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
+    
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
+    <?php include "modal.php"; ?>
+    <script>
+    $(function() {
+    $('<?php echo $_SESSION['modal']; ?>').modal();//if you want you can have a timeout to hide the window after x seconds
+    });
+    </script>
+
 </body>
 
 </html>

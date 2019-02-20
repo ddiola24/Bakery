@@ -28,25 +28,30 @@ if($submit == "addorder"):
 
 	$getproductid = $prod->getproductid($order['pid']);
 
-	if($order['qty'] <= $getproductid):
-	$addorder = $db->addorder($order);
-	$prodprice = $db->checkprodprice($order['pid']);	
-	$price = $prodprice[0]['price'];
 
-	//echo $order['promo']." ".$price." ".$order['qty'];
+	if($order['qty'] <= $getproductid){
+		
+		if($order['promo'] == 'PAN20' ){
+			$addorder = $db->addorder($order);
+			$prodprice = $db->checkprodprice($order['pid']);	
+			$price = $prodprice[0]['price'];
+			$getorder = $db->getorder();
 
-	$multiple = ($order['qty'] % 20);
+			$remainder = $getorder[0]['orderqty'] % 5;
+			$discounted = abs($remainder-$getorder[0]['orderqty']);
+			$totalremainder = ($remainder*$price);
+			$totaldiscounted = ($discounted*($price-1));
+			$grandtotal = ($totaldiscounted+$totalremainder);
+			$getorder[0]['subtotal'] = $grandtotal;
+			$gettotal = $db->gettotal();
 
-	if($order['promo'] == 'PAN20' && $price == '5.00' && $multiple != 0 ){
-		//echo "promo";
-		$getorder = $db->getorderpromo();
-		//print_r($getorder);
-		$gettotal = $db->gettotalpromo();
-	}else{
-		$getorder = $db->getorder();
-		$gettotal = $db->gettotal();
+		print_r($getorder);
+		}else{
+			$addorder = $db->addorder($order);
+			$getorder = $db->getorder();
+			$gettotal = $db->gettotal();
+		}
 	}
-	endif;
 endif;
 
 if($submit == "removeorder"):

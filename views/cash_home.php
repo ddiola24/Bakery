@@ -190,9 +190,10 @@ $data =$db->getuser($_SESSION['username']);
                                             <form action="<?php $_PHP_SELF ?>" method="POST">
                                                 <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-amber">
                                                 <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
+                                                 <?php endforeach; ?>
                                                 <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
                                                                 <br>
-                                                <select name="promo"class="form-control show-tick">
+                                                <select name="promo" class="form-control show-tick">
                                                     <option value="">-- Select Promo --</option>
                                                     <option value="PAN20">5 for 20</option>
                                                     <option >Soon</option>s
@@ -202,193 +203,11 @@ $data =$db->getuser($_SESSION['username']);
                                                                 <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
                                                 </button>
                                             </form>
-                                             <?php endforeach; ?>
+                                            
                                              
                                         </div>
                                     </div>
                                     <!-- #END BREAD -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="drinks">
-                                    <!-- PROMO ITEMS -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getdrink as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-blue">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END DRINK -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="burger">
-                                    <!-- Burger -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-brown">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="B1T1">Buy 1 Take 1</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END Burger -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="cakes">
-                                    <!-- CAKES -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-pink">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END CAKES -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="icecream">
-                                    <!-- ICE CREAM -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-yellow">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END ICE CREAM -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="shortorders">
-                                    <!-- SHORT ORDERS -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-black">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END SHORT ORDERS -->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="combo">
-                                    <!-- COMBO MEALS -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-white">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END COMBO MEALS-->
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="refreshments">
-                                    <!-- REFRESHMENTS -->
-                                    <div class="body">
-                                        <div class="row clearfix">
-                                            <?php error_reporting(E_ERROR | E_PARSE); foreach ($getothers as $index => $bread): ?>
-                                            <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <button name="submit" type="submit" value="addorder"  style="border-right: 50px; border-radius: 10px;" type="button"  class="col-xs-6 col-sm-4 col-md-3 col-lg-3 demo-color-box bg-green">
-                                                <div class="color-name"><?php echo $bread['pname']." ₱".$bread['price']."/pcs"; ?></div>
-                                                <input min="0" type="number" name="qty" class="form-control" placeholder="Quantity" required="">
-                                                                <br>
-                                                <select name="promo"class="form-control show-tick">
-                                                    <option value="">-- Select Promo --</option>
-                                                    <option value="PAN20">5 for 20</option>
-                                                    <option >Soon</option>s
-                                                </select>
-                                                           
-                                                                <input type="hidden" name="pid" value="<?php echo $bread['pid']; ?>">
-                                                                <input type="hidden" name="uid" value="<?php echo $data->uid; ?>">
-                                                </button>
-                                            </form>
-                                             <?php endforeach; ?>
-
-                                        </div>
-                                    </div>
-                                    <!-- #END REFRESHMENTS -->
                                 </div>
                             </div>
                                 <!-- #END Tab -->

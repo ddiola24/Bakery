@@ -5,10 +5,9 @@ if( !isset($_SESSION['username']) && !isset($_SESSION['password']) && $_SESSION[
 unset($_SESSION['page']);
 $_SESSION['page'] =  basename($_SERVER['PHP_SELF']);
 include "../controllers/transactionFucntions.php"; 
+include "modal.php"
 $db = new userModel();
 $data =$db->getuser($_SESSION['username']);
-
-//print_r($data->uid);
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +25,6 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Bootstrap Core Css -->
     <link href="../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../plugins/bootstrap/css/icon.css" rel="stylesheet">
 
     <!-- Waves Effect Css -->
     <link href="../plugins/node-waves/waves.css" rel="stylesheet" />
@@ -173,48 +171,52 @@ $data =$db->getuser($_SESSION['username']);
                                              <form action="<?php $_PHP_SELF ?>" method="POST">
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input required="" type="text" id="pname" name="pname" class="form-control">
+                                                        <input type="text" id="pname" name="pname" class="form-control">
                                                         <label class="form-label">Product Name: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input required="" type="text" id="pdesc" name="pdescs" class="form-control">
+                                                        <input type="text" id="pdesc" name="pdescs" class="form-control">
                                                         <label class="form-label">Product Description: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input required="" type="number" id="price" name="price" class="form-control">
+                                                        <input type="text" id="price" name="price" class="form-control">
                                                         <label class="form-label">Price: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
                                                     <div class="form-line">
-                                                        <input required="" type="number" id="qty" name="qty" class="form-control">
+                                                        <input type="number" id="qty" nam="qty" class="form-control">
                                                         <label class="form-label">Quantity: </label>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group form-float">
-                                                    <select required="" name="category" class="form-control show-tick">
+                                                    <select class="form-control show-tick">
                                                         <option value="">-- Please Category --</option>
                                                         <option value="bread">Bread</option>
-                                                        <option value="drink">Drinks</option>
-                                                        <option value="others">Others</option>
+                                                        <option value="cakes">Cake</option>
+                                                        <option value="burger">Burger</option>
+                                                        <option value="icecream">Ice Cream</option>
+                                                        <option value="shortorders">Short Orders</option>
+                                                        <option value="combo">Combo Meals</option>
+                                                        <option value="drinks">Drinks</option>
+                                                        <option value="refreshments">Refreshments</option>
                                                     </select>
                                                 </div>
-                                            
+                                            </form>
                                         </div>
                                         <div class="modal-footer">
-                                             <input  hidden="hidden" name="uid" value="<?php echo $data->uid; ?>" >
-                                            <button type="submit" name="submit" value="addprod" class="btn btn-link waves-effect">SAVE CHANGES</button>
+                                            <button type="submit" nam="submit" value=äddprod class="btn btn-link waves-effect">SAVE CHANGES</button>
                                             <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CANCEL</button>
+                                            <button data-target="#updateuser" data-toggle="modal" type="button" class="btn btn-info">UPDATE</button>
                                         </div>
-                                        </form>
                                     </div>
                                 </div>
                           </div>
@@ -230,33 +232,25 @@ $data =$db->getuser($_SESSION['username']);
                                             <th>Price</th>
                                             <th>Quantity</th>
                                             <th>Category</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php error_reporting(E_ERROR | E_PARSE); foreach ($getproducts as $index => $product):  ?>
+                                    <tfoot>
                                         <tr>
-                                            <td><?php echo $product['pname']; ?></td>
-                                            <td><?php echo $product['pdesc']; ?></td>
-                                            <td><?php echo $product['price']; ?></td>
-                                            <td><?php echo $product['qty']; ?></td>
-                                            <td><?php echo $product['category']; ?></td>
-                                            <td>
-                                                <form action="<?php $_PHP_SELF ?>" method="POST">
-                                                <input  hidden="hidden" name="pid" value="<?php echo $product['pid']; ?>" >
-                                                <input  hidden="hidden" name="pname" value="<?php echo $product['pname']; ?>" >
-                                                <input  hidden="hidden" name="pdesc" value="<?php echo $product['pdesc']; ?>" >
-                                                <input  hidden="hidden" name="price" value="<?php echo $product['price']; ?>" >
-                                                <input  hidden="hidden" name="qty" value="<?php echo $product['qty']; ?>" >
-                                                <input  hidden="hidden" name="category" value="<?php echo $product['category']; ?>" >
-                                                <input  hidden="hidden" name="uid" value="<?php echo $data->uid; ?>" >
-                                                <button onclick="return confirm('Are you sure you want to delete <?php echo $product['pname']."?" ?>');" name="submit" value="deleteprod" type="submit" class="btn btn-danger">DELETE</button>
-                                                <button name="submit" value="restockmodal" type="submit" class="btn btn-info">RESTOCK</button>
-                                                </form>
-                                                
-                                            </td>
+                                            <th>Product Name</th>
+                                            <th>Product Description</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Category</th>
                                         </tr>
-                                    <?php endforeach; ?>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Pandesal</td>
+                                            <td>Yummy</td>
+                                            <td>5</td>
+                                            <td>2</td>
+                                            <td>Bread</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -286,7 +280,6 @@ $data =$db->getuser($_SESSION['username']);
     <!-- Custom Js -->
     <script src="../js/admin.js"></script>
     <script src="../js/pages/tables/jquery-datatable.js"></script>
-   
 
     <!-- Select Plugin Js -->
     <script src="../plugins/bootstrap-select/js/bootstrap-select.js"></script>
@@ -304,12 +297,6 @@ $data =$db->getuser($_SESSION['username']);
 
     <!-- Demo Js -->
     <script src="../js/demo.js"></script>
-    <?php include "modal.php"; ?>
-    <script>
-    $(function() {
-    $('<?php echo $_SESSION['modal']; ?>').modal();//if you want you can have a timeout to hide the window after x seconds
-    });
-    </script>
 </body>
 
 </html>
